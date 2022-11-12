@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import classes from './hero.module.css';
+import classes from '../../styles/hero.module.css';
 
 function Hero() {
   return (
