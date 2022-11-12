@@ -1,8 +1,16 @@
 import AllPosts from '../../components/posts/all-posts';
-import { DUMMY_POSTS } from '../../lib/dummy-data';
+import { getAllPosts } from '../../lib/posts-util';
 
-function AllPostsPage() {
-  return <AllPosts posts={DUMMY_POSTS} />;
+function AllPostsPage(props) {
+  return <AllPosts posts={props.allPosts} />;
+}
+
+export function getStaticProps() {
+  return {
+    props: {
+      allPosts: getAllPosts(),
+    },
+  };
 }
 
 export default AllPostsPage;
