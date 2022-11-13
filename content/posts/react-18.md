@@ -14,12 +14,16 @@ React v18.0 was released earlier this year. With the focus being on performance 
 
 All you have to do to upgrade to React 18 is simply:
 
+```js
         npm install react@18 react-dom@18
+```
 
 And then, in your root entry file, typically index.js, update ReactDOM.render to ReactDOM.createRoot and render your app using root:
 
+```js
         const root = ReactDOM.createRoot(document.getElementById(‘root’));
         root.render(<App />);
+```
 
 Note that, new features in React 18 don’t work without createRoot.
 
@@ -39,25 +43,27 @@ useTransition hook returns an array with two elements. A boolean value that indi
 
 State updates can be wrapped with startTransition(), if they should have lower priority.
 
-        import { useTransition } from 'react';
+```js
+import { useTransition } from 'react';
 
-        function App() {
-            const [isPending, startTransition] = useTransition();
-            const [results, setResults] = useState([]);
+function App() {
+  const [isPending, startTransition] = useTransition();
+  const [results, setResults] = useState([]);
 
-            const someEventHandler = (event) => {
-                startTransition(() => {
-                    setResults(event.target.value);
-                });
-            }
+  const someEventHandler = (event) => {
+    startTransition(() => {
+      setResults(event.target.value);
+    });
+  };
 
-            return (
-                <div>
-                    {isPending && <Spinner />}
-                    <MyComponent results={results} />
-                </div>
-            );
-        }
+  return (
+    <div>
+      {isPending && <Spinner />}
+      <MyComponent results={results} />
+    </div>
+  );
+}
+```
 
 ## New Hooks
 
@@ -81,31 +87,33 @@ Now, it works no matter where you make your state updates. To see the updated st
 
 ### Example: Automatic Batching
 
-        function App() {
-            const [count, setCount] = useState(0);
-            const [clicked, setClicked] = useState(false);
+```js
+function App() {
+  const [count, setCount] = useState(0);
+  const [clicked, setClicked] = useState(false);
 
-            const handleClick = () => {
-                setCount(count => count + 1); // Does not re-render yet
-                setClicked(clicked => !clicked); // Does not re-render yet
-                // Only re-render once at the end
-            }
+  const handleClick = () => {
+    setCount((count) => count + 1); // Does not re-render yet
+    setClicked((clicked) => !clicked); // Does not re-render yet
+    // Only re-render once at the end
+  };
 
-            const handleTimeOutClick = () => {
-                setTimeout(() => {
-                setClicked(clicked => !clicked);
-                setCount(count => count + 1);
-                // Only re-render once at the and﻿
-                });
-            };
-            return (
-                <div>
-                    <button onClick={handleClick}>Next</button>
-                        <h1 style={{ color: clicked ? "gray" : "black" }}>{count}</h1>
-                    <button onClick={handleTimeoutClick}> Timeout Handler </button>
-                </div>
-            );
-        }
+  const handleTimeOutClick = () => {
+    setTimeout(() => {
+      setClicked((clicked) => !clicked);
+      setCount((count) => count + 1);
+      // Only re-render once at the and
+    });
+  };
+  return (
+    <div>
+      <button onClick={handleClick}>Next</button>
+      <h1 style={{ color: clicked ? 'gray' : 'black' }}>{count}</h1>
+      <button onClick={handleTimeoutClick}> Timeout Handler </button>
+    </div>
+  );
+}
+```
 
 You might want to [check this discussion.](https://github.com/reactwg/react-18/discussions/21)
 
@@ -117,6 +125,7 @@ Starting from React 18, React does not suppress any logs. Also, a new developmen
 
 Another important change is about the Suspense component. This component can be used to help with UI updates related to data fetching. You can delay the component rendering and show a fallback component while waiting, until the code for a lazily loaded component is downloaded. Previously, Suspense could only be used on the client with React.lazy API. With React 18, you can also use Suspense if you use server side rendering. Which means, you can use this component in Next.js for example.
 
+```js
         function App() {
             return (
                 <Suspense fallback={“Loading...”}>
@@ -124,6 +133,7 @@ Another important change is about the Suspense component. This component can be 
                 </Suspense>
             );
         }
+```
 
 ## Conclusion
 
@@ -137,10 +147,12 @@ React 18 is a major release, that includes improvements to server-side rendering
 
 [React 18 New Features — Concurrent Rendering, Automatic Batching, and More by Shruti Kapoor on freeCodeCamp](https://www.freecodecamp.org/news/react-18-new-features/)
 
-## Read This Article On Medium
+---
 
-[What's New in React 18 - Medium post by me](https://medium.com/@ilkyaz.arabaci/whats-new-in-react-18-b98c9c2b0f76)
+## _Read This Article On Medium_
 
-Cheers,
+_[What's New in React 18 - Medium post by me](https://medium.com/@ilkyaz.arabaci/whats-new-in-react-18-b98c9c2b0f76)_
 
-ilkyaz
+_Cheers,_
+
+_ilkyaz_
