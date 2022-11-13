@@ -27,7 +27,7 @@ Note that, new features in React 18 don’t work without createRoot.
 
 ## Concurrency
 
-The most important new concept is Concurrent React, which is a behind-the-scenes mechanism to help with <strong>state update prioritization</strong>. When you first upgrade to React 18, without adding any concurrent features, updates are rendered synchronously, as before. So, once an update starts rendering, it is interruptable. This means, if there is a lot of data to be processed, the UI can get slow, especially on slower devices. However, in concurrent rendering, it is not the case.
+The most important new concept is Concurrent React, which is a behind-the-scenes mechanism to help with **state update prioritization**. When you first upgrade to React 18, without adding any concurrent features, updates are rendered synchronously, as before. So, once an update starts rendering, it is interruptable. This means, if there is a lot of data to be processed, the UI can get slow, especially on slower devices. However, in concurrent rendering, it is not the case.
 
 ## Transitions
 
@@ -47,14 +47,14 @@ State updates can be wrapped with startTransition(), if they should have lower p
 
             const someEventHandler = (event) => {
                 startTransition(() => {
-                setResults(event.target.value);
+                    setResults(event.target.value);
                 });
             }
 
             return (
                 <div>
-                {isPending && <Spinner />}
-                <MyComponent results={results} />
+                    {isPending && <Spinner />}
+                    <MyComponent results={results} />
                 </div>
             );
         }
@@ -100,9 +100,9 @@ Now, it works no matter where you make your state updates. To see the updated st
             };
             return (
                 <div>
-                <button onClick={handleClick}>Next</button>
-                <h1 style={{ color: clicked ? "gray" : "black" }}>{count}</h1>
-                <button onClick={handleTimeoutClick}> Timeout Handler </button>
+                    <button onClick={handleClick}>Next</button>
+                        <h1 style={{ color: clicked ? "gray" : "black" }}>{count}</h1>
+                    <button onClick={handleTimeoutClick}> Timeout Handler </button>
                 </div>
             );
         }
@@ -120,14 +120,14 @@ Another important change is about the Suspense component. This component can be 
         function App() {
             return (
                 <Suspense fallback={“Loading...”}>
-                <ComponentThatFetchesData />
+                    <ComponentThatFetchesData />
                 </Suspense>
             );
         }
 
 ## Conclusion
 
-React 18 is a major release, that includes improvements to server-side rendering performance as well as improvements on the client-side. With the <strong>new concurrent rendering mechanism</strong>, you can prepare multiple versions of the UI at the same time. startTransition(), useTransition(), useDeferredValue() and Full Suspense Support are the new concurrent features. For basic applications, you can easily upgrade to React 18.
+React 18 is a major release, that includes improvements to server-side rendering performance as well as improvements on the client-side. With the **new concurrent rendering mechanism**, you can prepare multiple versions of the UI at the same time. startTransition(), useTransition(), useDeferredValue() and Full Suspense Support are the new concurrent features. For basic applications, you can easily upgrade to React 18.
 
 ## Resources
 
