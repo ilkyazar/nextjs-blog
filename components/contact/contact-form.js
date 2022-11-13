@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import Notification from '../ui/notification';
 import classes from '../../styles/contact-form.module.css';
 
 async function sendContactData(contactDetails) {
@@ -130,6 +130,13 @@ function ContactForm() {
           <button>Send Message</button>
         </div>
       </form>
+      {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.message}
+        />
+      )}
     </section>
   );
 }
