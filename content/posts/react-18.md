@@ -23,7 +23,7 @@ And then, in your root entry file, typically index.js, update ReactDOM.render to
 
 Note that, new features in React 18 don’t work without createRoot.
 
-![React 18](/images/posts/react-18/react-18.png)
+![React 18](react-18.png)
 
 ## Concurrency
 
@@ -136,3 +136,11 @@ React 18 is a major release, that includes improvements to server-side rendering
 [React 18 — What’s New, What Changed & Upgrade Guide by Maximillian Schwarzmüller on Academind](https://www.youtube.com/watch?v=N0DhCV_-Qbg&ab_channel=Academind)
 
 [React 18 New Features — Concurrent Rendering, Automatic Batching, and More by Shruti Kapoor on freeCodeCamp](https://www.freecodecamp.org/news/react-18-new-features/)
+
+## Read This Article On Medium
+
+[What's New in React 18 - Medium post by me](https://medium.com/@ilkyaz.arabaci/whats-new-in-react-18-b98c9c2b0f76)
+
+Cheers,
+
+ilkyaz
