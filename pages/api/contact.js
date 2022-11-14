@@ -27,10 +27,11 @@ async function handler(req, res) {
     console.log(newMessage);
 
     let client;
+
+    const connectionStr = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.5pdti.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`;
+
     try {
-      client = await MongoClient.connect(
-        'mongodb+srv://x:xxx@cluster0.5pdti.mongodb.net/nextjs-blog?retryWrites=true&w=majority'
-      );
+      client = await MongoClient.connect(connectionStr);
     } catch (err) {
       res
         .status(500)
@@ -42,7 +43,7 @@ async function handler(req, res) {
 
     try {
       const result = await db
-        .collection('messages')
+        .collection(process.env.mongodb_collection)
         .insertOne(newMessage);
       newMessage.id = result.insertedId;
     } catch (err) {
